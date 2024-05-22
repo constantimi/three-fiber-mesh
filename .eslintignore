@@ -1,0 +1,6 @@
+build/*
+node_modules/*
+**/mocks/*
+**/*mock*
+**/models/*
+**/deprecated/*
