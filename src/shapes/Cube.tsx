@@ -4,14 +4,12 @@ import { BoxGeometry, Mesh } from 'three';
 
 extend({ BoxGeometry });
 
-const Cube = () => {
-  // =====================================================================
-  // states
+type Props = {
+  color: string;
+};
 
+const Cube = ({ color }: Props) => {
   const cubeRef = useRef<Mesh>(null);
-
-  // =====================================================================
-  // effect
 
   useFrame(() => {
     const cube = cubeRef.current;
@@ -23,7 +21,7 @@ const Cube = () => {
   return (
     <mesh ref={cubeRef}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshPhongMaterial color="aqua" />
+      <meshPhongMaterial color={color} />
     </mesh>
   );
 };
