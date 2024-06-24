@@ -4,12 +4,18 @@ import Cube from './Cube';
 import { OrbitControls } from '@react-three/drei';
 
 const App = () => (
-  <div className="h-[100vh] w-[100vw]">
+  <div
+    className="App"
+    style={{
+      height: "100vh",
+      width: "100vw",
+    }}
+  >
     <Canvas
       camera={{
         near: 0.1,
         far: 1000,
-        zoom: 1,
+        zoom: 2,
         position: [0, 0, 5],
       }}
     >
