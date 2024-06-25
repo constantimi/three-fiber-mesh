@@ -7,11 +7,12 @@ extend({ BoxGeometry });
 
 type Props = {
   color: string;
+  scale: number;
 };
 
-const Torus = ({ color }: Props) => {
-  const mesh = useRef<THREE.Mesh>(null);
-  const sphere = useRef<THREE.Mesh>(null);
+const Torus = ({ color, scale, ...props }: Props) => {
+  const mesh = useRef<THREE.Mesh>(null!);
+  const sphere = useRef<THREE.Mesh>(null!);
 
   useFrame((state, delta) => {
     if (mesh.current) {
@@ -23,6 +24,8 @@ const Torus = ({ color }: Props) => {
   return (
     <mesh
       ref={mesh}
+      scale={[scale, scale, scale]}
+      {...props}
       onPointerMove={(e) => {
         if (sphere.current && mesh.current) {
           sphere.current.position.copy(mesh.current.worldToLocal(e.point));
@@ -39,11 +42,11 @@ const Torus = ({ color }: Props) => {
         }
       }}
     >
-      <torusKnotGeometry args={[0.5, 0.4, 200, 50]} />
+      <torusKnotGeometry args={[0.4, 0.5, 200, 50]} />
       <meshNormalMaterial />
       <mesh raycast={() => null} ref={sphere} visible={false}>
         <sphereGeometry args={[0.2]} />
-        <meshBasicMaterial color={color} toneMapped={false} />
+        <meshBasicMaterial color={new THREE.Color(color)} toneMapped={false} />
       </mesh>
     </mesh>
   );

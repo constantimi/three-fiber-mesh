@@ -1,14 +1,16 @@
 import React, { useRef } from 'react';
 import { useFrame, extend } from '@react-three/fiber';
 import { BoxGeometry, Mesh } from 'three';
+import * as THREE from 'three';
 
 extend({ BoxGeometry });
 
 type Props = {
   color: string;
+  scale: number;
 };
 
-const Cube = ({ color }: Props) => {
+const Cube = ({ color, scale, ...props }: Props) => {
   const cubeRef = useRef<Mesh>(null);
 
   useFrame(() => {
@@ -19,9 +21,9 @@ const Cube = ({ color }: Props) => {
   });
 
   return (
-    <mesh ref={cubeRef}>
+    <mesh ref={cubeRef} scale={[scale, scale, scale]} {...props}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshPhongMaterial color={color} />
+      <meshPhongMaterial color={new THREE.Color(color)} />
     </mesh>
   );
 };

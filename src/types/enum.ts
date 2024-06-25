@@ -1,4 +1,5 @@
 export enum SHAPES {
-  CUBE = 'cube',
   TORUS = 'torus',
+  CUBE = 'cube',
+  SPHERE = 'sphere',
 }
