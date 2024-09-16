@@ -2,8 +2,8 @@ import React from 'react';
 import { Bvh, OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { folder, Leva, useControls } from 'leva';
-import Torus from './features/Torus';
 import { theme } from './constants/theme';
+import Torus from './features/Torus';
 
 const App = () => {
   const {
@@ -18,12 +18,12 @@ const App = () => {
   } = useControls({
     object: folder({
       wireframe: { value: false },
-      scale: { value: 1.1, min: 0.1, max: 3, step: 0.1 },
+      scale: { value: 1, min: 0.1, max: 3, step: 0.1 },
       radius: { value: 1, min: 0.1, max: 3, step: 0.1 },
       outer_diameter: { value: 0.3, min: 0.1, max: 1, step: 0.1 },
-      tubes: { value: 1, min: 1, max: 100, step: 1 },
-      speed_delta_x: { value: 0, min: 0, max: 100, step: 0.1 },
-      speed_delta_y: { value: 0.2, min: 0, max: 100, step: 0.1 },
+      tubes: { value: 97, min: 1, max: 100, step: 1 },
+      speed_delta_x: { value: 0.2, min: 0, max: 100, step: 0.1 },
+      speed_delta_y: { value: 0.4, min: 0, max: 100, step: 0.1 },
     }),
     orbit_rotate_speed: {
       value: 0.2,
