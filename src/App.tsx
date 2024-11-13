@@ -6,6 +6,7 @@ import { theme } from './constants/theme';
 import Torus from './features/Torus';
 
 const App = () => {
+  // Define controls for the UI using Leva
   const {
     orbit_rotate_speed,
     scale,
@@ -51,7 +52,9 @@ const App = () => {
           position: [0, 0, 5],
         }}
       >
+        {/* Use BVH for efficient raycasting */}
         <Bvh firstHitOnly>
+          {/* Render the Torus component with dynamic properties */}
           <Torus
             scale={scale}
             radius={radius}
@@ -62,8 +65,10 @@ const App = () => {
             wireframe={wireframe}
           />
         </Bvh>
+        {/* Add orbit controls with auto-rotation */}
         <OrbitControls autoRotate={true} autoRotateSpeed={orbit_rotate_speed} />
       </Canvas>
+      {/* Add Leva panel for UI controls */}
       <Leva collapsed={false} theme={theme} />
     </div>
   );
